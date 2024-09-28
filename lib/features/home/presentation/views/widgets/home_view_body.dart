@@ -1,3 +1,4 @@
+import 'package:book_app_clean_arch/features/home/presentation/views/widgets/custom_app_bar_home_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -6,18 +7,10 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(25),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Text(
-              "data",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
+          CustomAppBarHomeView(),
         ],
       ),
     );
