@@ -1,4 +1,5 @@
 import 'package:book_app_clean_arch/features/home/presentation/views/widgets/custom_app_bar_home_view.dart';
+import 'package:book_app_clean_arch/features/home/presentation/views/widgets/top_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,6 +12,7 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: [
           CustomAppBarHomeView(),
+          TopListView(),
         ],
       ),
     );
