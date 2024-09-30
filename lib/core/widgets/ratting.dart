@@ -1,18 +1,30 @@
+import 'package:book_app_clean_arch/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class Ratting extends StatelessWidget {
-  const Ratting({super.key});
+  final MainAxisAlignment mainAxisAlignment;
+
+  const Ratting({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
+      mainAxisAlignment: mainAxisAlignment,
       children: [
-        Icon(
+        const Icon(
           Icons.star,
           color: Colors.yellow,
         ),
-        SizedBox(width: 5),
-        Text("(245)"),
+        const SizedBox(width: 5),
+        Text(
+          "4.5",
+          style: Styles.textStyle14.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(width: 5),
+        const Text("(245)"),
       ],
     );
   }
