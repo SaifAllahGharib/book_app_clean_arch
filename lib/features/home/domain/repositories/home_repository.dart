@@ -1,7 +1,7 @@
+import 'package:book_app_clean_arch/core/errors/failure.dart';
 import 'package:book_app_clean_arch/features/home/domain/entities/BookEntity.dart';
+import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
-  Future<List<BookEntity>> fetchTopBooks();
-
-  Future<List<BookEntity>> fetchBottomBooks();
+  Future<Either<Failure, List<BookEntity>>> fetchBooks({required String path});
 }
