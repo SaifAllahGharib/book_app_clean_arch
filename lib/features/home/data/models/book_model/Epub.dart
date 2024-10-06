@@ -1,12 +1,10 @@
 class Epub {
   Epub({
-    this.isAvailable,
-  });
+      this.isAvailable,});
 
   Epub.fromJson(dynamic json) {
     isAvailable = json['isAvailable'];
   }
-
   bool? isAvailable;
 
   Map<String, dynamic> toJson() {
@@ -14,4 +12,5 @@ class Epub {
     map['isAvailable'] = isAvailable;
     return map;
   }
+
 }

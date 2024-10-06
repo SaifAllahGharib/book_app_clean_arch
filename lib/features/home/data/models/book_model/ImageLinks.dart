@@ -1,14 +1,12 @@
 class ImageLinks {
   ImageLinks({
-    this.smallThumbnail,
-    this.thumbnail,
-  });
+      this.smallThumbnail, 
+      this.thumbnail,});
 
   ImageLinks.fromJson(dynamic json) {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
-
   String? smallThumbnail;
   String? thumbnail;
 
@@ -18,4 +16,5 @@ class ImageLinks {
     map['thumbnail'] = thumbnail;
     return map;
   }
+
 }

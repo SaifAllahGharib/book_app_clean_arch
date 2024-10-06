@@ -1,30 +1,31 @@
-import 'ImageLinks.dart';
 import 'IndustryIdentifiers.dart';
-import 'PanelizationSummary.dart';
 import 'ReadingModes.dart';
+import 'PanelizationSummary.dart';
+import 'ImageLinks.dart';
 
 class VolumeInfo {
   VolumeInfo({
-    this.title,
-    this.authors,
-    this.publisher,
-    this.publishedDate,
-    this.description,
-    this.industryIdentifiers,
-    this.readingModes,
-    this.pageCount,
-    this.printType,
-    this.categories,
-    this.maturityRating,
-    this.allowAnonLogging,
-    this.contentVersion,
-    this.panelizationSummary,
-    this.imageLinks,
-    this.language,
-    this.previewLink,
-    this.infoLink,
-    this.canonicalVolumeLink,
-  });
+      this.title, 
+      this.authors, 
+      this.publisher, 
+      this.publishedDate, 
+      this.description, 
+      this.industryIdentifiers, 
+      this.readingModes, 
+      this.pageCount, 
+      this.printType, 
+      this.categories, 
+      this.averageRating, 
+      this.ratingsCount, 
+      this.maturityRating, 
+      this.allowAnonLogging, 
+      this.contentVersion, 
+      this.panelizationSummary, 
+      this.imageLinks, 
+      this.language, 
+      this.previewLink, 
+      this.infoLink, 
+      this.canonicalVolumeLink,});
 
   VolumeInfo.fromJson(dynamic json) {
     title = json['title'];
@@ -38,28 +39,22 @@ class VolumeInfo {
         industryIdentifiers?.add(IndustryIdentifiers.fromJson(v));
       });
     }
-    readingModes = json['readingModes'] != null
-        ? ReadingModes.fromJson(json['readingModes'])
-        : null;
+    readingModes = json['readingModes'] != null ? ReadingModes.fromJson(json['readingModes']) : null;
     pageCount = json['pageCount'];
     printType = json['printType'];
-    categories =
-        json['categories'] != null ? json['categories'].cast<String>() : [];
+    categories = json['categories'] != null ? json['categories'].cast<String>() : [];
+    averageRating = json['averageRating'];
+    ratingsCount = json['ratingsCount'];
     maturityRating = json['maturityRating'];
     allowAnonLogging = json['allowAnonLogging'];
     contentVersion = json['contentVersion'];
-    panelizationSummary = json['panelizationSummary'] != null
-        ? PanelizationSummary.fromJson(json['panelizationSummary'])
-        : null;
-    imageLinks = json['imageLinks'] != null
-        ? ImageLinks.fromJson(json['imageLinks'])
-        : null;
+    panelizationSummary = json['panelizationSummary'] != null ? PanelizationSummary.fromJson(json['panelizationSummary']) : null;
+    imageLinks = json['imageLinks'] != null ? ImageLinks.fromJson(json['imageLinks']) : null;
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
-
   String? title;
   List<String>? authors;
   String? publisher;
@@ -70,6 +65,8 @@ class VolumeInfo {
   int? pageCount;
   String? printType;
   List<String>? categories;
+  int? averageRating;
+  int? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
@@ -88,8 +85,7 @@ class VolumeInfo {
     map['publishedDate'] = publishedDate;
     map['description'] = description;
     if (industryIdentifiers != null) {
-      map['industryIdentifiers'] =
-          industryIdentifiers?.map((v) => v.toJson()).toList();
+      map['industryIdentifiers'] = industryIdentifiers?.map((v) => v.toJson()).toList();
     }
     if (readingModes != null) {
       map['readingModes'] = readingModes?.toJson();
@@ -97,6 +93,8 @@ class VolumeInfo {
     map['pageCount'] = pageCount;
     map['printType'] = printType;
     map['categories'] = categories;
+    map['averageRating'] = averageRating;
+    map['ratingsCount'] = ratingsCount;
     map['maturityRating'] = maturityRating;
     map['allowAnonLogging'] = allowAnonLogging;
     map['contentVersion'] = contentVersion;
@@ -112,4 +110,5 @@ class VolumeInfo {
     map['canonicalVolumeLink'] = canonicalVolumeLink;
     return map;
   }
+
 }
