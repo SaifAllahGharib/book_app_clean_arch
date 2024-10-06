@@ -13,6 +13,7 @@ dependencies:
   cached_network_image: ^3.4.1
   dartz: ^0.10.1
   json_annotation: ^4.9.0
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:
