@@ -12,11 +12,14 @@ dependencies:
   go_router: ^14.2.8
   cached_network_image: ^3.4.1
   dartz: ^0.10.1
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  json_serializable: ^6.8.0
+  build_runner: ^2.4.13
 
 flutter:
   uses-material-design: true
