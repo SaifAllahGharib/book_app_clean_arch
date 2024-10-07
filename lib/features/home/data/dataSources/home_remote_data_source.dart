@@ -1,4 +1,5 @@
 import 'package:book_app_clean_arch/core/utils/api_services.dart';
+import 'package:book_app_clean_arch/core/utils/functions/store_books_in_db.dart';
 import 'package:book_app_clean_arch/features/home/data/models/book_model/BookModel.dart';
 import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 
@@ -14,7 +15,9 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchBooks({required String path}) async {
     var data = await _apiServices.get(endPoint: path);
-    return _storeData(data);
+    List<BookEntity> books = _storeData(data);
+    storeBooksInDB(books: books);
+    return books;
   }
 
   List<BookEntity> _storeData(Map<String, dynamic> data) {

@@ -7,7 +7,7 @@ import 'package:hive/hive.dart';
 void main() async {
   runApp(const MyApp());
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox("books");
+  await Hive.openBox(booksDB);
 }
 
 class MyApp extends StatelessWidget {
