@@ -1,4 +1,4 @@
-import 'package:book_app_clean_arch/features/home/domain/entities/BookEntity.dart';
+import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 
 import 'AccessInfo.dart';
 import 'SaleInfo.dart';
