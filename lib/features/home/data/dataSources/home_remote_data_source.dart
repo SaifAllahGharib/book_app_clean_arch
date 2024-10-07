@@ -4,7 +4,7 @@ import 'package:book_app_clean_arch/features/home/data/models/book_model/BookMod
 import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 
 sealed class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchBooks({required String path});
+  Future<List<BookEntity>> fetchBooksFromAPI({required String path});
 }
 
 class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
@@ -13,10 +13,10 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
   HomeRemoteDataSourceImp(this._apiServices);
 
   @override
-  Future<List<BookEntity>> fetchBooks({required String path}) async {
+  Future<List<BookEntity>> fetchBooksFromAPI({required String path}) async {
     var data = await _apiServices.get(endPoint: path);
     List<BookEntity> books = _storeData(data);
-    storeBooksInDB(books: books);
+    await storeBooksInDB(books: books, path: path);
     return books;
   }
 
