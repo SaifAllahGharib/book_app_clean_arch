@@ -2,7 +2,7 @@ import 'package:book_app_clean_arch/core/utils/api_services.dart';
 import 'package:book_app_clean_arch/features/home/data/models/book_model/BookModel.dart';
 import 'package:book_app_clean_arch/features/home/domain/entities/BookEntity.dart';
 
-abstract class HomeRemoteDataSource {
+sealed class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchBooks({required String path});
 }
 
