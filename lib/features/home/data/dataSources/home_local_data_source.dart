@@ -9,7 +9,7 @@ sealed class HomeLocalDataSource {
 class HomeLocalDataSourceImp extends HomeLocalDataSource {
   @override
   List<BookEntity> fetch({required String path}) {
-    var books = path == endPointTopBooks
+    Box<BookEntity> books = path == endPointTopBooks
         ? Hive.box<BookEntity>(topBooksDB)
         : Hive.box<BookEntity>(bottomBooksDB);
     return books.values.toList();

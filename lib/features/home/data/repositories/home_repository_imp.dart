@@ -4,6 +4,7 @@ import 'package:book_app_clean_arch/features/home/data/dataSources/home_remote_d
 import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:book_app_clean_arch/features/home/domain/repositories/home_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepositoryImp extends HomeRepository {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -18,13 +19,15 @@ class HomeRepositoryImp extends HomeRepository {
   Future<Either<Failure, List<BookEntity>>> fetchBooks(
       {required String path}) async {
     try {
-      var localBooks = homeLocalDataSource.fetch(path: path);
+      List<BookEntity> localBooks = homeLocalDataSource.fetch(path: path);
       var books = (localBooks.isEmpty)
           ? await homeRemoteDataSource.fetch(path: path)
           : localBooks;
       return right(books);
     } catch (e) {
-      return left(Failure());
+      return (e is DioException)
+          ? left(ServerFailure.fromDioException(e))
+          : left(ServerFailure(msg: e.toString()));
     }
   }
 }
