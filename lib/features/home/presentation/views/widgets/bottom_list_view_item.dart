@@ -1,6 +1,5 @@
 import 'package:book_app_clean_arch/core/utils/media_query.dart';
 import 'package:book_app_clean_arch/core/utils/styles.dart';
-import 'package:book_app_clean_arch/core/widgets/custom_image.dart';
 import 'package:book_app_clean_arch/core/widgets/ratting.dart';
 import 'package:book_app_clean_arch/features/home/presentation/views/book_details_view.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class BottomListViewItem extends StatelessWidget {
         height: 170,
         child: Row(
           children: [
-            const CustomImage(),
+            // const CustomImage(),
             const SizedBox(width: 20),
             SizedBox(
               width: MyMediaQuery.getWidth(context) * 0.51,

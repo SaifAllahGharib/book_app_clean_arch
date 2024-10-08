@@ -16,12 +16,15 @@ class HomeRepositoryImp extends HomeRepository {
   );
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchBooks(
-      {required String path}) async {
+  Future<Either<Failure, List<BookEntity>>> fetchBooks({
+    required String path,
+    int pageNumber = 0,
+  }) async {
     try {
       List<BookEntity> localBooks = _homeLocalDataSource.fetch(path: path);
       var books = (localBooks.isEmpty)
-          ? await _homeRemoteDataSource.fetch(path: path)
+          ? await _homeRemoteDataSource.fetch(
+              path: "$path'&startIndex='${pageNumber * 10}")
           : localBooks;
       return right(books);
     } catch (e) {

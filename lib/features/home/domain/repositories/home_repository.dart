@@ -3,5 +3,8 @@ import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.da
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepository {
-  Future<Either<Failure, List<BookEntity>>> fetchBooks({required String path});
+  Future<Either<Failure, List<BookEntity>>> fetchBooks({
+    required String path,
+    int pageNumber = 0,
+  });
 }

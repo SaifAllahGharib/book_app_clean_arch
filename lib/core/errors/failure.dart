@@ -28,6 +28,7 @@ class ServerFailure extends Failure {
           msg: 'Invalid certificate. Please verify the certificate.',
         );
       case DioExceptionType.badResponse:
+        print(e.response.toString());
         return ServerFailure.fromResponse(e.response!.statusCode, e.response);
       case DioExceptionType.cancel:
         return ServerFailure(

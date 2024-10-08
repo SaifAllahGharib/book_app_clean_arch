@@ -1,6 +1,3 @@
-import 'package:book_app_clean_arch/core/utils/styles.dart';
-import 'package:book_app_clean_arch/core/widgets/custom_image.dart';
-import 'package:book_app_clean_arch/features/home/presentation/views/widgets/book_details_list_view.dart';
 import 'package:book_app_clean_arch/features/home/presentation/views/widgets/custom_button.dart';
 import 'package:book_app_clean_arch/features/home/presentation/views/widgets/text_section.dart';
 import 'package:flutter/material.dart';
@@ -29,22 +26,12 @@ class BookDetailsViewBody extends StatelessWidget {
             const SizedBox(height: 30),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 80),
-              child: CustomImage(),
+              // child: CustomImage(),
             ),
             const SizedBox(height: 50),
             const TextSection(),
             const SizedBox(height: 30),
             const CustomButton(),
-            const SizedBox(height: 50),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "You can also like",
-                style: Styles.textStyle20,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const BookDetailsListView(),
           ],
         ),
       ),

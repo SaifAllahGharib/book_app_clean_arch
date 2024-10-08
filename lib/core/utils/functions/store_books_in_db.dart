@@ -5,9 +5,11 @@ import 'package:hive/hive.dart';
 Future<void> storeBooksInDB(
     {required List<BookEntity> books, required String path}) async {
   switch (path) {
-    case topBooksDB:
-      await Hive.box(topBooksDB).addAll(books);
-    case bottomBooksDB:
-      await Hive.box(bottomBooksDB).addAll(books);
+    case endPointTopBooks:
+      await Hive.box<BookEntity>(topBooksDB).addAll(books);
+      break;
+    case endPointBottomBooks:
+      await Hive.box<BookEntity>(bottomBooksDB).addAll(books);
+      break;
   }
 }

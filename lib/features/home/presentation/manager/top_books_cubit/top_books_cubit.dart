@@ -12,7 +12,7 @@ class TopBooksCubit extends Cubit<TopBooksState> {
 
   TopBooksCubit(this._fetchBooksUseCase) : super(TopBooksInit());
 
-  Future<void> fetchBooks() async {
+  Future<void> fetchBooks({int pageNumber = 0}) async {
     emit(TopBooksLoading());
     Either<Failure, List<BookEntity>> result =
         await _fetchBooksUseCase.call(path: endPointTopBooks);
