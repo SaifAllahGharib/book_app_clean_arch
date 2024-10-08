@@ -5,12 +5,12 @@ import 'package:book_app_clean_arch/features/home/domain/repositories/home_repos
 import 'package:dartz/dartz.dart';
 
 class FetchBooksUseCase extends UseCase<List<BookEntity>> {
-  final HomeRepository homeRepository;
+  final HomeRepository _homeRepository;
 
-  FetchBooksUseCase({required this.homeRepository});
+  FetchBooksUseCase(this._homeRepository);
 
   @override
   Future<Either<Failure, List<BookEntity>>> call({required String path}) async {
-    return await homeRepository.fetchBooks(path: path);
+    return await _homeRepository.fetchBooks(path: path);
   }
 }

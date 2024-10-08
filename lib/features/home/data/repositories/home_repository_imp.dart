@@ -7,21 +7,21 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepositoryImp extends HomeRepository {
-  final HomeRemoteDataSource homeRemoteDataSource;
-  final HomeLocalDataSource homeLocalDataSource;
+  final HomeRemoteDataSource _homeRemoteDataSource;
+  final HomeLocalDataSource _homeLocalDataSource;
 
-  HomeRepositoryImp({
-    required this.homeRemoteDataSource,
-    required this.homeLocalDataSource,
-  });
+  HomeRepositoryImp(
+    this._homeRemoteDataSource,
+    this._homeLocalDataSource,
+  );
 
   @override
   Future<Either<Failure, List<BookEntity>>> fetchBooks(
       {required String path}) async {
     try {
-      List<BookEntity> localBooks = homeLocalDataSource.fetch(path: path);
+      List<BookEntity> localBooks = _homeLocalDataSource.fetch(path: path);
       var books = (localBooks.isEmpty)
-          ? await homeRemoteDataSource.fetch(path: path)
+          ? await _homeRemoteDataSource.fetch(path: path)
           : localBooks;
       return right(books);
     } catch (e) {

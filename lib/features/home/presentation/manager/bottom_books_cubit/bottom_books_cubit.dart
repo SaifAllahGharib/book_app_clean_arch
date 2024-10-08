@@ -8,15 +8,14 @@ import 'package:dartz/dartz.dart';
 import 'bottom_books_state.dart';
 
 class BottomBooksCubit extends Cubit<BottomBooksState> {
-  final FetchBooksUseCase fetchBooksUseCase;
+  final FetchBooksUseCase _fetchBooksUseCase;
 
-  BottomBooksCubit({required this.fetchBooksUseCase})
-      : super(BottomBooksInit());
+  BottomBooksCubit(this._fetchBooksUseCase) : super(BottomBooksInit());
 
   Future<void> fetchBooks() async {
     emit(BottomBooksLoading());
     Either<Failure, List<BookEntity>> result =
-        await fetchBooksUseCase.call(path: endPointBottomBooks);
+        await _fetchBooksUseCase.call(path: endPointBottomBooks);
 
     result.fold(
       (failure) => emit(BottomBooksFailure(msg: failure.msg)),
