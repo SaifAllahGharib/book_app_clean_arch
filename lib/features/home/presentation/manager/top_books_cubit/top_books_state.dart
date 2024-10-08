@@ -1,9 +1,13 @@
 abstract class TopBooksState {}
 
-class InitTopBooks extends TopBooksState {}
+class TopBooksInit extends TopBooksState {}
 
-class LoadingTopBooks extends TopBooksState {}
+class TopBooksLoading extends TopBooksState {}
 
-class SuccessTopBooks extends TopBooksState {}
+class TopBooksSuccess extends TopBooksState {}
 
-class FailureTopBooks extends TopBooksState {}
+class TopBooksFailure extends TopBooksState {
+  final String msg;
+
+  TopBooksFailure({required this.msg});
+}
