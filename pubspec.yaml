@@ -17,6 +17,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.4
+  bloc: ^8.1.4
 
 dev_dependencies:
   flutter_test:
