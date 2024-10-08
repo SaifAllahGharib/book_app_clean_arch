@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:book_app_clean_arch/constants.dart';
 import 'package:book_app_clean_arch/core/errors/failure.dart';
 import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:book_app_clean_arch/features/home/domain/useCases/fetch_books_use_case.dart';
@@ -11,10 +12,10 @@ class TopBooksCubit extends Cubit<TopBooksState> {
 
   TopBooksCubit({required this.fetchBooksUseCase}) : super(TopBooksInit());
 
-  Future<void> fetchBooks({required String path}) async {
+  Future<void> fetchBooks() async {
     emit(TopBooksLoading());
     Either<Failure, List<BookEntity>> result =
-        await fetchBooksUseCase.call(path: path);
+        await fetchBooksUseCase.call(path: endPointTopBooks);
 
     result.fold(
       (failure) => emit(TopBooksFailure(msg: failure.msg)),
