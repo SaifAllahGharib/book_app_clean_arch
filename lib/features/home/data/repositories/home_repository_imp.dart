@@ -21,12 +21,16 @@ class HomeRepositoryImp extends HomeRepository {
     int pageNumber = 0,
   }) async {
     try {
-      List<BookEntity> localBooks = _homeLocalDataSource.fetch(path: path);
+      List<BookEntity> localBooks = _homeLocalDataSource.fetch(
+        path: path,
+        pageNumber: pageNumber,
+      );
       List<BookEntity> books = (localBooks.isEmpty)
           ? await _homeRemoteDataSource.fetch(path: "$path${pageNumber * 10}")
           : localBooks;
       return right(books);
     } catch (e) {
+      print(e);
       return (e is DioException)
           ? left(ServerFailure.fromDioException(e))
           : left(ServerFailure(msg: e.toString()));

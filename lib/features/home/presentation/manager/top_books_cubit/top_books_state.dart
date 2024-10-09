@@ -6,6 +6,8 @@ class TopBooksInit extends TopBooksState {}
 
 class TopBooksLoading extends TopBooksState {}
 
+class TopBooksPagination extends TopBooksState {}
+
 class TopBooksSuccess extends TopBooksState {
   final List<BookEntity> books;
 
