@@ -22,9 +22,8 @@ class HomeRepositoryImp extends HomeRepository {
   }) async {
     try {
       List<BookEntity> localBooks = _homeLocalDataSource.fetch(path: path);
-      var books = (localBooks.isEmpty)
-          ? await _homeRemoteDataSource.fetch(
-              path: "$path'&startIndex='${pageNumber * 10}")
+      List<BookEntity> books = (localBooks.isEmpty)
+          ? await _homeRemoteDataSource.fetch(path: "$path${pageNumber * 10}")
           : localBooks;
       return right(books);
     } catch (e) {
