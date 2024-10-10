@@ -13,14 +13,6 @@ class CustomAppBarHomeView extends StatelessWidget {
           AppImages.logo,
           height: 20,
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.search_rounded,
-            size: 27,
-            color: Colors.white,
-          ),
-        ),
       ],
     );
   }
