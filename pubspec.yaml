@@ -21,14 +21,6 @@ dependencies:
   get_it: ^8.0.0
   url_launcher: ^6.3.1
   fluttertoast: ^8.2.8
-  flutter_launcher_icons: ^0.11.0
-
-flutter_icons:
-  image_path: "assets/images/logo.png"
-  android:
-    adaptive_icon_background: "#100B20FF"
-    adaptive_icon_foreground: "assets/images/logo.png"
-  ios: true
 
 dev_dependencies:
   flutter_test:
