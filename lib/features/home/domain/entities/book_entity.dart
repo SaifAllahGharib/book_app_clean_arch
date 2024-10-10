@@ -16,6 +16,8 @@ class BookEntity {
   final num? rating;
   @HiveField(5)
   final num? ratingCount;
+  @HiveField(6)
+  final String? bookLink;
 
   BookEntity({
     required this.bookId,
@@ -24,5 +26,6 @@ class BookEntity {
     required this.author,
     required this.rating,
     required this.ratingCount,
+    required this.bookLink,
   });
 }

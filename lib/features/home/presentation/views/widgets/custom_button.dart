@@ -2,7 +2,12 @@ import 'package:book_app_clean_arch/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  final void Function()? onPressed;
+
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +18,11 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
       ),
       color: const Color(0xffEF8262),
+      onPressed: onPressed,
       child: const Text(
         "Free Preview",
         style: Styles.textStyle18,
       ),
-      onPressed: () {},
     );
   }
 }

@@ -22,6 +22,7 @@ class BookModel extends BookEntity {
           author: volumeInfo.authors?.first ?? "No name",
           rating: volumeInfo.averageRating ?? 0,
           ratingCount: volumeInfo.ratingsCount ?? 0,
+          bookLink: saleInfo!.buyLink ?? volumeInfo.previewLink ?? "",
         );
 
   BookModel.fromJson(dynamic json)
@@ -35,6 +36,9 @@ class BookModel extends BookEntity {
               : "No Author",
           rating: json['volumeInfo']?['averageRating']?.toDouble() ?? 0.0,
           ratingCount: json['volumeInfo']?['ratingsCount'] ?? 0,
+          bookLink: json['saleInfo']?['buyLink'] ??
+              json['volumeInfo']?['previewLink'] ??
+              "",
         ) {
     kind = json['kind'];
     id = json['id'];

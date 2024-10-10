@@ -1,25 +1,33 @@
 import 'package:book_app_clean_arch/core/utils/styles.dart';
 import 'package:book_app_clean_arch/core/widgets/ratting.dart';
+import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 class TextSection extends StatelessWidget {
-  const TextSection({super.key});
+  final BookEntity bookEntity;
+
+  const TextSection({super.key, required this.bookEntity});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Text(
-          "The J bosxds",
+          bookEntity.title,
+          textAlign: TextAlign.center,
           style: Styles.textStyle30,
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Text(
-          "Raying os sfdsdf",
+          bookEntity.author!,
+          textAlign: TextAlign.center,
           style: Styles.textStyle18,
         ),
-        SizedBox(height: 3),
-        Ratting(mainAxisAlignment: MainAxisAlignment.center),
+        const SizedBox(height: 3),
+        Ratting(
+          mainAxisAlignment: MainAxisAlignment.center,
+          bookEntity: bookEntity,
+        ),
       ],
     );
   }

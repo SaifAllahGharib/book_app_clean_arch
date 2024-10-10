@@ -3,8 +3,10 @@ import 'package:book_app_clean_arch/core/widgets/custom_image.dart';
 import 'package:book_app_clean_arch/core/widgets/loading.dart';
 import 'package:book_app_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:book_app_clean_arch/features/home/presentation/manager/top_books_cubit/top_books_cubit.dart';
+import 'package:book_app_clean_arch/features/home/presentation/views/book_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class TopListView extends StatefulWidget {
   final List<BookEntity> books;
@@ -53,13 +55,20 @@ class _TopListViewState extends State<TopListView> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 30, right: 10),
-                  child: CustomImage(imageUrl: widget.books[index].image!),
+                  child: GestureDetector(
+                      onTap: () => GoRouter.of(context).push(
+                            BookDetailsView.id,
+                            extra: widget.books[index],
+                          ),
+                      child: CustomImage(bookEntity: widget.books[index])),
                 );
               },
             ),
           ),
         ),
-        const SizedBox(width: 20),
+        (widget.loadingPagination == true)
+            ? const SizedBox(width: 20)
+            : const SizedBox(width: 0),
         (widget.loadingPagination == true) ? const Loading() : const SizedBox(),
       ],
     );
@@ -76,7 +85,6 @@ class _TopListViewState extends State<TopListView> {
 
   void _fetchBooks() async {
     await BlocProvider.of<TopBooksCubit>(context)
-        .fetchBooks(pageNumber: _nextPage);
-    _nextPage++;
+        .fetchBooks(pageNumber: _nextPage++);
   }
 }

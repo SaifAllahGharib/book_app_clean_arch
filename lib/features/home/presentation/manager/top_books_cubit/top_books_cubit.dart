@@ -18,8 +18,10 @@ class TopBooksCubit extends Cubit<TopBooksState> {
     } else {
       emit(TopBooksPaginationLoading());
     }
-    Either<Failure, List<BookEntity>> result =
-        await _fetchBooksUseCase.call(path: endPointTopBooks, p: pageNumber);
+    Either<Failure, List<BookEntity>> result = await _fetchBooksUseCase.call(
+      path: endPointTopBooks,
+      p: pageNumber,
+    );
 
     result.fold(
       (failure) => (pageNumber == 0)

@@ -6,6 +6,10 @@ class BottomBooksInit extends BottomBooksState {}
 
 class BottomBooksLoading extends BottomBooksState {}
 
+class BottomBooksPaginationLoading extends BottomBooksState {}
+
+class BottomBooksPaginationFailure extends BottomBooksState {}
+
 class BottomBooksSuccess extends BottomBooksState {
   final List<BookEntity> books;
 
