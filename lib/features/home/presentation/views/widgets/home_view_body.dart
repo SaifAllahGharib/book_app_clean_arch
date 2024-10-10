@@ -1,7 +1,7 @@
 import 'package:book_app_clean_arch/core/utils/styles.dart';
 import 'package:book_app_clean_arch/features/home/presentation/views/widgets/bottom_list_view.dart';
 import 'package:book_app_clean_arch/features/home/presentation/views/widgets/custom_app_bar_home_view.dart';
-import 'package:book_app_clean_arch/features/home/presentation/views/widgets/top_list_view_bloc_builder.dart';
+import 'package:book_app_clean_arch/features/home/presentation/views/widgets/top_list_view_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomAppBarHomeView(),
-          TopListViewBlocBuilder(),
+          TopListViewBlocConsumer(),
           SizedBox(height: 50),
           Text(
             "Best Seller",

@@ -7,14 +7,15 @@ import 'package:book_app_clean_arch/features/home/presentation/views/widgets/top
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TopListViewBlocBuilder extends StatefulWidget {
-  const TopListViewBlocBuilder({super.key});
+class TopListViewBlocConsumer extends StatefulWidget {
+  const TopListViewBlocConsumer({super.key});
 
   @override
-  State<TopListViewBlocBuilder> createState() => _TopListViewBlocBuilderState();
+  State<TopListViewBlocConsumer> createState() =>
+      _TopListViewBlocConsumerState();
 }
 
-class _TopListViewBlocBuilderState extends State<TopListViewBlocBuilder> {
+class _TopListViewBlocConsumerState extends State<TopListViewBlocConsumer> {
   final List<BookEntity> books = [];
   bool loading = false;
 
@@ -26,12 +27,14 @@ class _TopListViewBlocBuilderState extends State<TopListViewBlocBuilder> {
           loading = false;
           books.addAll(state.books);
         }
-        if (state is TopBooksPagination) {
+        if (state is TopBooksPaginationLoading) {
           loading = true;
         }
       },
       builder: (context, state) {
-        if (state is TopBooksSuccess || state is TopBooksPagination) {
+        if (state is TopBooksSuccess ||
+            state is TopBooksPaginationLoading ||
+            state is TopBooksPaginationFailure) {
           return TopListView(
             books: books,
             loadingPagination: loading,
